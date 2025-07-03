@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Tasks</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>TypeScript Tasks Solutions</h1>
+
+    <div id="output">
+        <!-- Results will appear here -->
+    </div>
+
+    <!-- Load compiled JavaScript files -->
+    <script src="dist/task-1.js"></script>
+    <script src="dist/task-2.js"></script>
+    <script src="dist/task-3.js"></script>
+    <script src="dist/task-4.js"></script>
+    <script src="dist/task-5.js"></script>
+    <script src="dist/task-6.js"></script>
+    <script src="dist/task-7.js"></script>
+    <script src="dist/task-8.js"></script>
+
+    <script>
+        function logToHtml(message) {
+            const outputDiv = document.getElementById('output');
+            const p = document.createElement('p');
+            p.textContent = message;
+            outputDiv.appendChild(p);
+        }
+
+        const originalConsoleLog = console.log;
+        console.log = function (message) {
+            logToHtml(message);
+            originalConsoleLog.apply(console, arguments);
+        };
+    </script>
+</body>
+
+</html>
