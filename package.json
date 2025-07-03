@@ -1,14 +1,14 @@
 {
-  "name": "goit-js-hw-12",
+  "name": "01-ts-basics",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://timoha-osobennyy.github.io/goit-js-hw-12",
+  "homepage": "https://timoha-osobennyy.github.io/01-ts-basics",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/goit-js-hw-12/",
+    "build": "vite build --base=/01-ts-basics/",
     "preview": "vite preview",
-    "deploy": "vite build --base=/goit-js-hw-12/ && gh-pages -d dist"
+    "deploy": "vite build --base=/01-ts-basics/ && gh-pages -d dist"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
