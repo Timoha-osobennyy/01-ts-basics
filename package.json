@@ -9,7 +9,7 @@
     "build": "vite build --base=/01-ts-basics/",
     "preview": "vite preview",
     "clean": "rimraf dist .nojekyll",
-    "predeploy": "npm run clean && npm run build && echo '' > dist/.nojekyll",
+    "predeploy": "npm run build && copy .nojekyll dist",
     "deploy": "gh-pages -d dist --dotfiles"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
@@ -26,11 +26,11 @@
     "postcss": "^8.4.41",
     "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.5.3",
+    "rimraf": "^5.0.5",
     "typescript": "^5.8.3",
     "vite": "^5.4.6",
     "vite-plugin-full-reload": "^1.2.0",
-    "vite-plugin-html-inject": "^1.1.2",
-    "rimraf": "^5.0.5"
+    "vite-plugin-html-inject": "^1.1.2"
   },
   "description": "Цей проект було створено за допомогою Vite.",
   "repository": {
