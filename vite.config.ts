@@ -4,25 +4,12 @@ import path from "path";
 export default defineConfig({
   base: "/01-ts-basics/",
   build: {
-    outDir: "dist",
+    outDir: "docs",  # Изменяем на docs для GitHub Pages
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, "index.html"),
-      },
-    
-      external: [],
-    },
-  },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-
-      "src": path.resolve(__dirname, "./src"),
-    },
-  },
-
-  optimizeDeps: {
-    include: ["src/**/*"],
-  },
+        main: path.resolve(__dirname, "index.html")
+      }
+    }
+  }
 });
