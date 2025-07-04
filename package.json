@@ -6,11 +6,11 @@
   "homepage": "https://timoha-osobennyy.github.io/01-ts-basics",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/01-ts-basics/",
+    "build": "vite build",
     "preview": "vite preview",
     "clean": "rimraf dist .nojekyll",
-    "predeploy": "npm run build && copy .nojekyll dist",
-    "deploy": "gh-pages -d dist --dotfiles"
+    "predeploy": "npm run build && New-Item -ItemType File -Path docs/.nojekyll -Force",
+    "deploy": "git add . && git commit -m 'Deploy to GitHub Pages' && git push origin main"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",

@@ -10,11 +10,19 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, "index.html"),
       },
+    
+      external: [],
     },
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+
+      "src": path.resolve(__dirname, "./src"),
     },
+  },
+
+  optimizeDeps: {
+    include: ["src/**/*"],
   },
 });
