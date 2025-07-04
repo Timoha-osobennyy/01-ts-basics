@@ -5,39 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TypeScript Tasks</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Перенесём axios в devDependencies, если используется только для разработки -->
+    <script type="module" crossorigin src="/assets/main.js"></script>
+    <link rel="stylesheet" href="/assets/style.css">
 </head>
 
 <body>
-    <h1>TypeScript Tasks Solutions</h1>
+    <div class="container">
+        <header>
+            <h1>TypeScript Tasks Solutions</h1>
+        </header>
 
-    <div id="output">
-        <!-- Results will appear here -->
+        <main>
+            <div id="output" class="output-container">
+                <!-- Results will appear here -->
+            </div>
+        </main>
     </div>
 
-    <!-- Load compiled JavaScript files -->
-    <script src="dist/task-1.js"></script>
-    <script src="dist/task-2.js"></script>
-    <script src="dist/task-3.js"></script>
-    <script src="dist/task-4.js"></script>
-    <script src="dist/task-5.js"></script>
-    <script src="dist/task-6.js"></script>
-    <script src="dist/task-7.js"></script>
-    <script src="dist/task-8.js"></script>
+    <script type="module">
+        // Улучшенный вывод в HTML
+        class OutputLogger {
+            constructor(containerId) {
+                this.container = document.getElementById(containerId);
+                this.originalConsole = window.console;
+                this.setupConsoleOverride();
+            }
 
-    <script>
-        function logToHtml(message) {
-            const outputDiv = document.getElementById('output');
-            const p = document.createElement('p');
-            p.textContent = message;
-            outputDiv.appendChild(p);
+            log(message, type = 'log') {
+                const messageElement = document.createElement('div');
+                messageElement.className = `message ${type}`;
+                messageElement.textContent = message;
+                this.container.appendChild(messageElement);
+                this.container.scrollTop = this.container.scrollHeight;
+            }
+
+            setupConsoleOverride() {
+                const logger = this;
+                ['log', 'error', 'warn'].forEach(method => {
+                    const original = console[method];
+                    console[method] = function () {
+                        logger.log(Array.from(arguments).join(' '), method);
+                        original.apply(this, arguments);
+                    };
+                });
+            }
         }
 
-        const originalConsoleLog = console.log;
-        console.log = function (message) {
-            logToHtml(message);
-            originalConsoleLog.apply(console, arguments);
-        };
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            new OutputLogger('output');
+            console.log('Application initialized');
+        });
     </script>
 </body>
 
